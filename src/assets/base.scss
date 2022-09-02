@@ -7,6 +7,7 @@
   --success-2: #27ae60;
   --gray-1: #f6f6f6;
   --gray-2: #ddd;
+  --gray-3: #34495e;
   --text-color: #444;
   --text-primary-color: #fff;
 
@@ -91,6 +92,11 @@ body {
   padding: 20px;
 }
 
+.px-20 {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 .p-30 {
   padding: 30px;
 }
@@ -105,8 +111,16 @@ body {
   margin-bottom: 10px;
 }
 
+.mr-10 {
+  margin-right: 10px;
+}
+
 .m-20 {
   margin: 20px;
+}
+
+.mr-20 {
+  margin-right: 20px;
 }
 
 .m-30 {
