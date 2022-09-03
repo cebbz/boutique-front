@@ -25,7 +25,7 @@
         border-top-right-radius: (--border-radius);
         border-top-left-radius: (--border-radius);
         background-image: url(../../assets/mbp.PNG);
-        height: 150px;
+        height: 250px;
         background-size: cover;
         background-position: center;
     }
