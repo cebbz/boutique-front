@@ -9,8 +9,8 @@ import Cart from './components/Cart/Cart.vue';
 <template>
     <div class="app-container">
         <TheHeader class="header" />
-        <!-- <Shop class="shop b2" />
-        <Cart class="cart b3" />-->
+        <Shop class="shop" />
+        <!-- <Cart class="cart b3" /> -->
         <TheFooter class="footer b4" />
     </div>
 </template>

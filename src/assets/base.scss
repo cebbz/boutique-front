@@ -19,7 +19,7 @@
 
 //reset
 * {
-  margin: 0;
+  // margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
@@ -125,4 +125,31 @@ body {
 
 .m-30 {
   margin: 30px;
+}
+
+//buttons
+
+.btn {
+  padding: 8px 15px;
+  border: 0;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.btn-primary {
+  background-color: var(--primary-1);
+  color: var(--text-primary-color);
+  &:hover {
+    background-color: var(--primary-2);
+  }
+}
+
+.btn-danger {
+  background-color: var(--danger-1);
+  color: var(--text-primary-color);
+  &:hover {
+    background-color: var(--danger-2);
+  }
 }

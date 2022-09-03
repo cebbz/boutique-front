@@ -1,6 +1,14 @@
 <template>
-    <div class="b5">
-        <h1>Shop Product</h1>
+    <div class="product d-flex flex-column">
+        <div class="product-image"></div>
+        <div class="p-10 d-flex flex-column">
+            <h4>Macbook Pro</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, voluptates.</p>
+            <div class="d-flex flex-row align-items-center">
+                <strong class="flex-fill">Prix: 1500€</strong>
+                <button class="btn btn-primary">Ajouter</button>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -8,4 +16,18 @@
 </script>
 
 <style lang="scss" scoped>
+.product {
+    background-color: white;
+    border: var(--border);
+    border-radius: var(--border-radius);
+
+    &-image {
+        border-top-right-radius: (--border-radius);
+        border-top-left-radius: (--border-radius);
+        background-image: url(../../assets/mbp.PNG);
+        height: 150px;
+        background-size: cover;
+        background-position: center;
+    }
+}
 </style>
