@@ -12,7 +12,8 @@
     </div>
 </template>
 
-<script setup lang="ts">import type { ProductInterface } from '@/interfaces/product.interface';
+<script setup lang="ts">
+import type { ProductInterface } from '@/interfaces';
 
 defineProps<{
     product: ProductInterface;
