@@ -1,6 +1,7 @@
 <template>
     <div class="grid p-20">
-        <ShopProduct v-for="product of products" :product="product" />
+        <ShopProduct v-for="product of products" :product="product"
+            @add-product-to-cart="emit('add-product-to-cart', $event)" />
     </div>
 </template>
 
@@ -10,6 +11,9 @@ import ShopProduct from './ShopProduct.vue';
 
 defineProps<{
     products: ProductInterface[];
+}>()
+const emit = defineEmits<{
+    (e: 'add-product-to-cart', productId: number): void;
 }>()
 </script>
 

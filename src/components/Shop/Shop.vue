@@ -1,6 +1,6 @@
 <template>
     <div>
-        <ShopProductList :products="products" />
+        <ShopProductList :products="products" @add-product-to-cart="emit('add-product-to-cart', $event)" />
     </div>
 </template>
 
@@ -11,6 +11,10 @@ import type { ProductInterface } from '@/interfaces/product.interface';
 
 defineProps<{
     products: ProductInterface[];
+}>()
+
+const emit = defineEmits<{
+    (e: 'add-product-to-cart', productId: number): void;
 }>()
 </script>
 
