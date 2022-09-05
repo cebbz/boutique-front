@@ -1,6 +1,6 @@
 <template>
     <div class="grid p-20">
-        <ShopProduct v-for="product of products" :product="product"
+        <ShopProduct v-for="product of products" :key="product.id" :product="product"
             @add-product-to-cart="emit('add-product-to-cart', $event)" />
     </div>
 </template>

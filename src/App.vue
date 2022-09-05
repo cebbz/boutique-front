@@ -5,14 +5,18 @@ import Shop from './components/Shop/Shop.vue';
 import Cart from './components/Cart/Cart.vue';
 import data from './data/product';
 import { computed, reactive } from 'vue';
-import type { ProductCartInterface, ProductInterface } from './interfaces';
+import type { FiltersInterface, FilterUpdate, ProductCartInterface, ProductInterface } from './interfaces';
+import { DEFAULT_FILTERS } from './data/filters';
+
 
 const state = reactive<{
-    cart: ProductCartInterface[];
-    products: ProductInterface[];
+    cart: ProductCartInterface[],
+    products: ProductInterface[],
+    filters: FiltersInterface
 }>({
     cart: [],
     products: data,
+    filters: DEFAULT_FILTERS
 });
 
 function addProductToCart(productId: number): void {
@@ -41,7 +45,34 @@ function removeProductFromCart(productId: number): void {
     }
 }
 
+function updateFilter(filterUpdate: FilterUpdate) {
+    if(filterUpdate.search !== undefined) {
+        state.filters.search = filterUpdate.search;
+    } else if (filterUpdate.priceRange) {
+        state.filters.priceRange = filterUpdate.priceRange;
+    } else if (filterUpdate.category) {
+        state.filters.category = filterUpdate.category;
+    } else {
+        state.filters = { ...DEFAULT_FILTERS };
+    }
+}
+
 const cartEmpty = computed(() => state.cart.length === 0);
+
+const filteredProducts = computed(() => {
+    return state.products.filter((product) => {
+        if(
+            product.title.toLowerCase().startsWith(state.filters.search.toLowerCase()) &&
+            product.price >= state.filters.priceRange[0] &&
+            product.price <= state.filters.priceRange[1] &&
+            (product.category === state.filters.category || state.filters.category === 'all')
+        ) {
+            return true;
+        } else {
+            return false;
+        }
+    })
+})
 
 </script>
 
@@ -50,7 +81,8 @@ const cartEmpty = computed(() => state.cart.length === 0);
         gridEmpty: cartEmpty,
     }">
         <TheHeader class="header" />
-        <Shop :products="state.products" @add-product-to-cart="addProductToCart" class="shop" />
+        <Shop @update-filter="updateFilter" :products="filteredProducts" @add-product-to-cart="addProductToCart"
+            class="shop" />
         <Cart v-if="!cartEmpty" :cart="state.cart" class="cart" @remove-product-from-cart="removeProductFromCart" />
         <TheFooter class="footer" />
     </div>
