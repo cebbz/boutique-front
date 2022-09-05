@@ -18,7 +18,7 @@ export default [
         category: 'streaming'
     },
     {
-        id: 2,
+        id: 3,
         image: 'src/assets/images/mbp.PNG',
         description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, voluptates.',
         title: 'Lenovo',
