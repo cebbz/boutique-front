@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { FiltersInterface, FilterUpdate } from '@/interfaces';
+import type { Category, FiltersInterface, FilterUpdate } from '@/interfaces';
 
 defineProps<{
     filters: FiltersInterface;
@@ -14,12 +14,16 @@ const emit = defineEmits<{
 
 <template>
     <div class="p-20">
+
+        <!-- Recherche par nom -->
         <section class="mb-20">
             <h3 class=mb-10>Rechercher</h3>
             <input :value="filters.search" @input="emit('updateFilter', {
                 search: ($event.target as HTMLInputElement).value
             })" type="text" placeholder="Rechercher">
         </section>
+
+        <!-- Recherche par prix -->
         <section class="mb-20">
             <h3 class=mb-10>Trier par prix</h3>
             <div class="mb-5"
@@ -33,9 +37,36 @@ const emit = defineEmits<{
                 }}</label>
             </div>
         </section>
+
+        <section class="mb-20">
+            <h3 class=mb-10>Trier par Catégorie</h3>
+            <div class="mb-5">
+                <p class="category" :class="{ selected: filters.category === category }"
+                    v-for="category in (['all', 'desktop', 'gamer', 'sreaming'] as Category[])"
+                    @click="emit('updateFilter', { category })"> {{
+        category
+                    }}</p>
+            </div>
+        </section>
     </div>
 </template>
 
 
 <style lang="scss" scoped>
+.category {
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 5px;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        background-color: #ccc;
+    }
+
+    &.selected {
+        background-color: #ccc;
+    }
+}
 </style>
