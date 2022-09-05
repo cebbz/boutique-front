@@ -53,7 +53,13 @@ function updateFilter(filterUpdate: FilterUpdate) {
     } else if (filterUpdate.category) {
         state.filters.category = filterUpdate.category;
     } else {
-        state.filters = { ...DEFAULT_FILTERS };
+        state.filters = {
+            search: '',
+            priceRange: [0, 10000],
+            category: 'all'
+        };
+
+        // state.filters = DEFAULT_FILTERS; // This is not working because of the reactive state 
     }
 }
 

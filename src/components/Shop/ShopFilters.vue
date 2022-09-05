@@ -13,7 +13,7 @@ const emit = defineEmits<{
 
 
 <template>
-    <div class="p-20">
+    <div class="p-20 d-flex flex-column">
 
         <!-- Recherche par nom -->
         <section class="mb-20">
@@ -38,16 +38,17 @@ const emit = defineEmits<{
             </div>
         </section>
 
-        <section class="mb-20">
+        <section class="mb-20 flex-fill">
             <h3 class=mb-10>Trier par Catégorie</h3>
             <div class="mb-5">
                 <p class="category" :class="{ selected: filters.category === category }"
-                    v-for="category in (['all', 'desktop', 'gamer', 'sreaming'] as Category[])"
+                    v-for="category in (['all', 'desktop', 'gamer', 'streaming'] as Category[])"
                     @click="emit('updateFilter', { category })"> {{
-        category
+                            category
                     }}</p>
             </div>
         </section>
+        <button class="btn btn-danger" @click="emit('updateFilter', {})">Supprimer les filtres</button>
     </div>
 </template>
 
