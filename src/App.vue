@@ -46,7 +46,7 @@ function removeProductFromCart(productId: number): void {
 }
 
 function updateFilter(filterUpdate: FilterUpdate) {
-    if(filterUpdate.search !== undefined) {
+    if (filterUpdate.search !== undefined) {
         state.filters.search = filterUpdate.search;
     } else if (filterUpdate.priceRange) {
         state.filters.priceRange = filterUpdate.priceRange;
@@ -61,7 +61,7 @@ const cartEmpty = computed(() => state.cart.length === 0);
 
 const filteredProducts = computed(() => {
     return state.products.filter((product) => {
-        if(
+        if (
             product.title.toLowerCase().startsWith(state.filters.search.toLowerCase()) &&
             product.price >= state.filters.priceRange[0] &&
             product.price <= state.filters.priceRange[1] &&
@@ -81,8 +81,8 @@ const filteredProducts = computed(() => {
         gridEmpty: cartEmpty,
     }">
         <TheHeader class="header" />
-        <Shop @update-filter="updateFilter" :products="filteredProducts" @add-product-to-cart="addProductToCart"
-            class="shop" />
+        <Shop @update-filter="updateFilter" @add-product-to-cart="addProductToCart" :products="filteredProducts"
+            :filters="state.filters" class="shop" />
         <Cart v-if="!cartEmpty" :cart="state.cart" class="cart" @remove-product-from-cart="removeProductFromCart" />
         <TheFooter class="footer" />
     </div>

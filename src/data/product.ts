@@ -16,5 +16,13 @@ export default [
         title: 'Macbook Air',
         price: 1000,
         category: 'streaming'
+    },
+    {
+        id: 2,
+        image: 'src/assets/images/mbp.PNG',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, voluptates.',
+        title: 'Lenovo',
+        price: 1000,
+        category: 'streaming'
     }
 ] as ProductInterface[];
